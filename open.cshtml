@@ -1,0 +1,29 @@
+﻿@{
+    // Receive the post and decode the JSON data
+    string json, tdata;
+    using(var reader = new StreamReader(Request.InputStream)){
+        json = reader.ReadToEnd();
+    }
+    var f = Json.Decode(json);
+
+    var db = Database.Open("notepad_cloud");
+    var db_data = db.QuerySingle("SELECT data FROM main WHERE link='"+ f["link"] + "'");
+    //var db_data = db.QuerySingle("SELECT data FROM main WHERE link='doom1427'");
+    
+    string x;
+    if (db_data != null) {
+        x = db_data.data;    
+    }
+    else {
+        x = "";
+    }
+    
+
+    if (x.Length > 0) {
+        tdata = x;
+    }
+    else {
+        tdata = "";
+    }
+
+}@tdata

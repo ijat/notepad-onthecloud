@@ -1,0 +1,465 @@
+﻿@{
+    //var db = Database.Open("notepad_cloud");
+    //var db_data = db.Query("SELECT * FROM txt_data");
+    //var grid = new WebGrid(source: db_data);
+
+    //var db_data2 = db.Query("INSERT INTO txt_data VALUES('999','123','moh\\nwoot\tsaddam')");
+    //INSERT INTO PersonsVALUES('Hussein', 'Saddam', 'White House')
+
+}<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+<script src="js/bootbox.min.js"></script>
+<script src="js/toastr.js"></script>
+
+<script>
+// Copyright 2006-2007 javascript-array.com
+
+var timeout	= 500;
+var closetimer	= 0;
+var ddmenuitem	= 0;
+
+// open hidden layer
+function mopen(id)
+{	
+	// cancel close timer
+	mcancelclosetime();
+
+	// close old layer
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+	// get new layer and show it
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+
+}
+// close showed layer
+function mclose()
+{
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose; 
+	</script>
+
+	<link href="css/demo.css" rel="stylesheet">
+    
+    <style type="text/css">
+        .head {
+            width: 100%;
+            height: 30px;
+            background: #7891BC;
+            color: #fff;
+            cursor: default;
+        }
+        .head a {
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFF;
+        }
+        .head a:hover {
+            text-decoration: none;
+            color: #FFF;
+        }
+        .htext {
+            margin-top: 3px;
+            margin-left: 7px;
+            float: left;
+        }
+        .menu {
+            width: 100%;
+            height: 23px;
+            background: #fff;
+            border-bottom: 1px solid #0078D7;
+            box-shadow: 1px 3px 2px rgba(0,0,0,.1);
+        }
+    
+        img.ico {
+            margin-left: 3px;
+            width:25px;
+            float: left;
+            height:25px;
+      }
+        
+      #white-screen {
+            
+        }
+        
+        
+      #sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 11px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 4px 10px;
+	width: 60px;
+	color: #000;
+	text-align: center;
+    z-index: 1000;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: #E5F3FF}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #f5f5f5;
+	border: 1px solid #5970B2}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #f5f5f5;
+		color: #2875DE;
+		font: 11px arial}
+
+	#sddm div a:hover
+	{	background: #E5F3FF;
+		color: #000}
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6-dist\css\bootstrap.css">
+    
+    
+
+    <head>
+        <div id="white-screen">
+        <div id="black-screen">
+        <meta charset="utf-8" />
+        <title>:: Notepad ::</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <div class="head"><img class="ico" alt="ico" src="favicon.ico"></img><a class="htext">Untitled - Notepad</a></div>
+        <div class="menu">
+        
+        <ul id="sddm">
+    <li><a href="#" 
+        onmouseover="mopen('m1')" 
+        onmouseout="mclosetime()">File</a>
+        <div id="m1" 
+            onmouseover="mcancelclosetime()" 
+            onmouseout="mclosetime()">
+            <a id="new" href="#">New...</a>
+            <a id ="open"href="#">Open...</a>
+            <a id="save" href="#">Save...</a>
+            <a href="#">Page Setup</a>
+            <a href="#">Print</a>
+            <a id="ex" href="#">Exit</a>
+        </div>
+    </li>
+    <li><a href="#"onmouseover="mopen('m3')" onmouseout="mclosetime()">Edit</a>
+        <div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+            <a href="#">Undo</a>
+            <a href="#">Cut</a>
+            <a href="#">Copy</a>
+            <a href="#">Paste</a>
+            <a href="#">Delete</a>
+            <a href="#">Find...</a>
+            <a href="#">Find Next</a>
+            <a href="#">Replace...</a>
+            <a href="#">Go To...</a>
+            <a href="#">Select All</a>
+            <a href="#">Time/Date</a>
+        </div>
+    </li>
+    <li><a href="#"onmouseover="mopen('m4')" onmouseout="mclosetime()">Format</a>
+        <div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <a href="#">Word Wrap</a>
+        <a href="#">Font...</a>
+        </div>
+    </li>
+    <li><a href="#"onmouseover="mopen('m5')" onmouseout="mclosetime()">View</a>
+        <div id="m5" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <a href="#">Status Bar</a>
+        </div>
+    </li>
+    <li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">Help</a>
+        <div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <a id="help" href="#">View Help</a>
+        <a id="about" href="#">About Notepad</a>
+        </div>
+    </li>
+</ul>
+<div style="clear:both"></div>
+        
+        </div>
+    </head>
+    <body>
+
+<div class="cssload-thecube">
+	<div class="cssload-cube cssload-c1"></div>
+	<div class="cssload-cube cssload-c2"></div>
+	<div class="cssload-cube cssload-c4"></div>
+	<div class="cssload-cube cssload-c3"></div>
+</div>
+     
+<div id="content-container">
+      <div id="editor-wrapper">
+        <div id="formatting-container">
+          <select title="Font" class="ql-font">
+            <option value="sans-serif" selected>Sans Serif</option>
+            <option value="Georgia, serif">Serif</option>
+            <option value="Monaco, 'Courier New', monospace">Monospace</option>
+          </select>
+          <select title="Size" class="ql-size">
+            <option value="10px">Small</option>
+            <option value="13px" selected>Normal</option>
+            <option value="18px">Large</option>
+            <option value="32px">Huge</option>
+          </select>
+          <select title="Text Color" class="ql-color">
+            <option value="rgb(255, 255, 255)">White</option>
+            <option value="rgb(0, 0, 0)" selected>Black</option>
+            <option value="rgb(255, 0, 0)">Red</option>
+            <option value="rgb(0, 0, 255)">Blue</option>
+            <option value="rgb(0, 255, 0)">Lime</option>
+            <option value="rgb(0, 128, 128)">Teal</option>
+            <option value="rgb(255, 0, 255)">Magenta</option>
+            <option value="rgb(255, 255, 0)">Yellow</option>
+          </select>
+          <select title="Background Color" class="ql-background">
+            <option value="rgb(255, 255, 255)" selected>White</option>
+            <option value="rgb(0, 0, 0)">Black</option>
+            <option value="rgb(255, 0, 0)">Red</option>
+            <option value="rgb(0, 0, 255)">Blue</option>
+            <option value="rgb(0, 255, 0)">Lime</option>
+            <option value="rgb(0, 128, 128)">Teal</option>
+            <option value="rgb(255, 0, 255)">Magenta</option>
+            <option value="rgb(255, 255, 0)">Yellow</option>
+          </select>
+          <select title="Text Alignment" class="ql-align">
+            <option value="left" selected>Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="justify">Justify</option>
+          </select>
+          <button title="Bold" class="ql-format-button ql-bold">Bold</button>
+          <button title="Italic" class="ql-format-button ql-italic">Italic</button>
+          <button title="Underline" class="ql-format-button ql-underline">Under</button>
+          <button title="Strikethrough" class="ql-format-button ql-strike">Strike</button>
+          <button title="Link" class="ql-format-button ql-link">Link</button>
+          <button title="Image" class="ql-format-button ql-image">Image</button>
+          <button title="Bullet" class="ql-format-button ql-bullet">Bullet</button>
+          <button title="List" class="ql-format-button ql-list">List</button>
+        </div>
+        <div id="editor-container"></div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/quill.js"></script>
+    <script type="text/javascript">
+        var editor = new Quill('#editor-container', {
+            modules: {
+                'toolbar': { container: '#formatting-container' }
+            }
+        });
+        editor.on('selection-change', function (range) {
+            console.log('selection-change', range)
+        });
+        editor.on('text-change', function (delta, source) {
+            console.log('text-change', delta, source)
+        });
+
+        $("#ex").click(function () {
+            bootbox.confirm("Are you sure?", function (result) {
+                if (result == true) {
+                    $("#black-screen").hide('slow');
+                    bootbox.dialog({
+                        message: "Reload the browser to start again.",
+                        title: "Notepad",
+                        buttons: {
+                        }
+                    });
+                }
+            });
+        });
+
+        $("#about").click(function () {
+            bootbox.dialog({
+                message: "(C) 2015 Ijat.my - - - For Multimedia System project",
+                title: "About Notepad On The Cloud",
+                buttons: {
+                    success: {
+                        label: "Cool!",
+                        className: "btn-success",
+                        callback: function () {
+
+                        }
+                    }
+                }
+            });
+        });
+
+        $("#open").click(function () {
+            bootbox.prompt("Enter the file code", function (result) {
+                //alert(result);
+                if (result === "" || result === null) {
+                } else {
+                    var json = { link: result.trim() };
+                    $.ajax({
+                        type: "POST",
+                        url: "/open.cshtml",
+                        data: JSON.stringify(json),
+                        contentType: "application/json",
+                        datatype: "html",
+                        beforeSend: function () {
+                            $(".cssload-thecube").show();
+                        },
+                        success: function (data) {
+                            $(".cssload-thecube").hide();
+                            if (data.length > 0) {
+                                editor.setHTML(decodeURIComponent(data));
+                                $(".htext").text(result + " - Notepad");
+
+                            } else {
+                                bootbox.alert("File not found!", function () {
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        $("#new").click(function () {
+            var length = editor.getLength();
+            if (length > 1) {
+                bootbox.confirm("Discard changes?", function (result) {
+                    if (result == true) {
+                        editor.setText('');
+                        $(".htext").text("Untitled - Notepad");
+                    }
+                });
+            }
+        });
+
+        $("#save").click(function () {
+            var length = editor.getLength();
+            if (length > 1 && length < 20000) {
+                var html = editor.getHTML();
+                var hdata = encodeURIComponent(html);
+                var json = { data: hdata };
+                console.log(html);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/save.cshtml",
+                    data: JSON.stringify(json),
+                    contentType: "application/json",
+                    datatype: "html",
+                    beforeSend: function () {
+                        $(".cssload-thecube").show();
+                    },
+                    success: function (data) {
+                        $(".cssload-thecube").hide();
+                        $(".htext").text(data + " - Notepad");
+                        bootbox.dialog({
+                            message: "File name: " + data,
+                            title: "File Saved!",
+                            buttons: {
+                                success: {
+                                    label: "OK~",
+                                    className: "btn-success",
+                                    callback: function () {
+
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                });
+            } else if (length > 20000) {
+                bootbox.alert("Too large! Calm down there...", function () { });
+            }
+            else {
+                bootbox.alert("What are you trying to do? Why save empty file ;)", function () { });
+            }
+        });
+
+        $("#help").click(function () {
+            var length = editor.getLength();
+            if (length > 1) {
+                bootbox.confirm("This action clears the text you have right now. Continue?", function (result) {
+                    if (result == true) {
+                        help_msg();
+                    }
+                });
+            } else {
+                help_msg();
+            }
+        });
+
+        function help_msg() {
+            editor.setHTML("<div><b>Notepad On The Cloud</b></div><div><i>Version: 0.01</i></div><div><i>Created by Ijat.my</i></div><div><br></div><div>:: :: ::</div><div><br></div><div><b>What is Notepad OTC?</b></div><div>It is a web application that looks like a Notepad software in your Windows operating system.</div><div>The only difference is all file are saved in our cloud storage and generate a memorable link for</div><div>you to open the file again.</div><div><br></div><div><b>How to Use?</b></div><div>1. Click File &gt; New.</div><div>2. Type anything.</div><div>3. Save and remember the link.</div><div><br></div><div><b>What is working?</b></div><div>Only few things were implemented, such as:</div><div> - <b>File:</b> New, Open, Save, Exit</div><div> - <b>Help:</b> View Help, About</div><div><br></div><div><br></div><div><b>NOTE: If you use this web app, it means you agree to our Terms and Conditions. </b></div>");
+        }
+
+        $(document).ready(function () {
+            $(".cssload-thecube").hide();
+            editor.setHTML("");
+            toastr.info("First time here? Please click this box ;)", "Hi there!", toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": true,
+                "onclick": function () {
+                    help_msg();
+                },
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "10000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            });
+        });
+
+        </script>
+
+    </body>
+        </div>
+        </div>
+</html>

@@ -1,0 +1,36 @@
+﻿@{
+    // Receive the post and decode the JSON data
+    string json, link;
+    using(var reader = new StreamReader(Request.InputStream)){
+        json = reader.ReadToEnd();
+    }
+    var d = Json.Decode(json);
+
+    
+    // Random numbers
+    Random rand = new Random();
+    int len_w = rand.Next(3,11);
+    int rval = rand.Next(10,10000);
+
+
+    // Get the random words from online API
+    string url = "http://randomword.setgetgo.com/get.php?len=" + len_w;
+    string result;
+
+    HttpWebRequest webrequest = (HttpWebRequest) HttpWebRequest.Create(url);
+    webrequest.Method        = "GET";
+    webrequest.ContentLength = 0;
+
+    WebResponse response = webrequest.GetResponse();
+
+    using(StreamReader stream = new StreamReader(response.GetResponseStream())){
+        result = stream.ReadToEnd();
+    }
+
+    link = result + rval;
+
+    var db = Database.Open("notepad_cloud");
+    var dbq = db.Query("INSERT INTO main VALUES('" + link + "','" + d["data"] +"')");
+
+}
+@link
