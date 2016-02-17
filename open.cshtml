@@ -8,7 +8,6 @@
 
     var db = Database.Open("notepad_cloud");
     var db_data = db.QuerySingle("SELECT data FROM main WHERE link='"+ f["link"] + "'");
-    //var db_data = db.QuerySingle("SELECT data FROM main WHERE link='doom1427'");
     
     string x;
     if (db_data != null) {
@@ -18,7 +17,6 @@
         x = "";
     }
     
-
     if (x.Length > 0) {
         tdata = x;
     }
